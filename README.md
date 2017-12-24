@@ -1,7 +1,7 @@
 # baidu-ueditor
 
 
-基于springboot开发的ueditor插件
+基于springboot开发的ueditor插件，ueditor官网地址 http://ueditor.baidu.com/website/
 
 1.添加maven:
 
@@ -13,6 +13,9 @@
         </dependency>
 
 ```
+
+手动在ueditor-core下执行 ` mvn clean install `
+
 
 2.编写html:
 
