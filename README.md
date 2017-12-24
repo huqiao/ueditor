@@ -17,7 +17,12 @@
 手动在ueditor-core下执行 ` mvn clean install `
 
 
-2.编写html:
+2.在resources下添加config.json
+
+
+
+
+3.编写html:
 
 可参考[static/index.html](https://github.com/codingapi/ueditor/blob/master/ueditor-demo/src/main/resources/static/index.html)
 

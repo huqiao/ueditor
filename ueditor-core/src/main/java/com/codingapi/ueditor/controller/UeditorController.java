@@ -47,8 +47,11 @@ public class UeditorController {
         if(null==projectPath) {
             String val = environment.getProperty("server.context-path", "");
             if ("".equals(val)) {
-                projectPath = "";
-                return projectPath;
+                val = environment.getProperty("server.contextPath", "");
+                if ("".equals(val)) {
+                    projectPath = "";
+                    return projectPath;
+                }
             }
             projectPath = val.replace("/", "") + "/";
         }

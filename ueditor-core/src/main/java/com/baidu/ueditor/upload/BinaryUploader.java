@@ -71,6 +71,8 @@ public class BinaryUploader {
 
 			String staticPath = (String)conf.get("staticPath");
 
+			String projectPath = (String)conf.get("projectPath");
+
 			String physicalPath = (String) conf.get("rootPath") + staticPath + savePath;
 
 			InputStream is = fileStream.getInputStream();
@@ -79,7 +81,9 @@ public class BinaryUploader {
 			is.close();
 
 			if (storageState.isSuccess()) {
-				storageState.putInfo("url", PathFormat.format(savePath));
+				String url =  PathFormat.format(savePath);
+				url = "/"+projectPath+url;
+				storageState.putInfo("url", url);
 				storageState.putInfo("type", suffix);
 				storageState.putInfo("original", originFileName + suffix);
 			}
