@@ -3,6 +3,8 @@ package com.codingapi.ueditor.controller;
 import com.baidu.ueditor.ActionEnter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -21,6 +23,13 @@ public class UeditorController {
 
     private String rootPath;
 
+    private String projectPath = null;
+
+    @Autowired
+    private Environment environment;
+
+    private final static String staticPath = "static/";
+
     public UeditorController() {
         String path  = UeditorController.class.getClassLoader().getResource("config.json").getPath();
         logger.info("path->"+path);
@@ -33,11 +42,24 @@ public class UeditorController {
         }
     }
 
+
+    private String getProjectPath(){
+        if(null==projectPath) {
+            String val = environment.getProperty("server.context-path", "");
+            if ("".equals(val)) {
+                projectPath = "";
+                return projectPath;
+            }
+            projectPath = val.replace("/", "") + "/";
+        }
+        return projectPath;
+    }
+
     @RequestMapping("/exec")
     public void exec(HttpServletRequest request, HttpServletResponse response, PrintWriter out){
         response.setHeader("Content-Type" , "text/html");
-        logger.info("rootPath->"+rootPath);
-        out.write( new ActionEnter( request, rootPath).exec());
+        logger.info("rootPath->"+rootPath+",staticPath->"+staticPath+",projectPath->"+getProjectPath());
+        out.write( new ActionEnter( request, rootPath,staticPath,getProjectPath()).exec());
     }
 
 }

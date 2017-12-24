@@ -1,6 +1,5 @@
 package com.baidu.ueditor.upload;
 
-import com.baidu.ueditor.ConfigManager;
 import com.baidu.ueditor.PathFormat;
 import com.baidu.ueditor.define.AppInfo;
 import com.baidu.ueditor.define.BaseState;
@@ -70,7 +69,9 @@ public class BinaryUploader {
 
 			savePath = PathFormat.parse(savePath, originFileName);
 
-			String physicalPath = (String) conf.get("rootPath") + ConfigManager.savePathPrefix+ savePath;
+			String staticPath = (String)conf.get("staticPath");
+
+			String physicalPath = (String) conf.get("rootPath") + staticPath + savePath;
 
 			InputStream is = fileStream.getInputStream();
 			State storageState = StorageManager.saveFileByInputStream(is,
