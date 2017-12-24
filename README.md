@@ -19,7 +19,7 @@
 
 2.编写html:
 
-可参考[static/index.html](https://github.com/1991wangliang/ueditor/blob/master/ueditor-demo/src/main/resources/static/index.html)
+可参考[static/index.html](https://github.com/codingapi/ueditor/blob/master/ueditor-demo/src/main/resources/static/index.html)
 
 
 
