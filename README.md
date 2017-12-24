@@ -22,3 +22,5 @@
 可参考[static/index.html](https://github.com/1991wangliang/ueditor/blob/master/ueditor-demo/src/main/resources/static/index.html)
 
 
+
+**详细使用教程可参考：ueditor-demo项目**
