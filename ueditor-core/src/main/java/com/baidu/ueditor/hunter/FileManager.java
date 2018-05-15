@@ -77,7 +77,6 @@ public class FileManager {
 
             String url =  PathFormat.format(this.getPath(file));
 
-
             url = url.replaceFirst(staticPath, projectPath);
 
 
